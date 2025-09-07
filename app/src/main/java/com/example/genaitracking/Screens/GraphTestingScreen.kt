@@ -9,6 +9,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.genaitracking.Model.Output
 //import com.patrykandpatrick.vico.core.cartesian.data.CartesianChartModelProducer
 
 import com.patrykandpatrick.vico.compose.axis.horizontal.bottomAxis
@@ -21,11 +22,11 @@ import com.patrykandpatrick.vico.core.entry.ChartEntryModelProducer
 import com.patrykandpatrick.vico.core.entry.entryOf
 
 // Your data class
-data class Output(
-    val message: String,
-    val x_axis: List<String>,
-    val y_axis: List<Double>
-)
+//data class Output(
+//    val message: String,
+//    val x_axis: List<String>,
+//    val y_axis: List<Double>
+//)
 
 @Composable
 fun BarChartFromOutput(outputData: Output?) {

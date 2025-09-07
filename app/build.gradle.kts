@@ -70,7 +70,9 @@ dependencies {
     implementation("io.ktor:ktor-client-cio")  // Version managed by BOM
     // Ktor includes SLF4J, Logback is a common implementation
     //implementation("ch.qos.logback:logback-classic:1.4.14")
-    implementation("ch.qos.logback:logback-classic:+")// Or a newer compatible version like 1.5.x
+    //implementation("ch.qos.logback:logback-classic:+")// Or a newer compatible version like 1.5.x
+    implementation("com.github.tony19:logback-android:3.0.0")
+    implementation("org.slf4j:slf4j-api:2.0.7")
     implementation("io.ktor:ktor-client-content-negotiation")
     implementation("io.ktor:ktor-serialization-kotlinx-json")
     implementation("io.ktor:ktor-client-logging")

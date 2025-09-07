@@ -11,18 +11,18 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.genaitracking.Screens.MainScreen
 import com.example.genaitracking.Screens.preveiw
 import com.example.genaitracking.ui.theme.GenAiTrackingTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        var veiwModel= GenAiVeiwModel()
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             GenAiTrackingTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    preveiw()
-                }
+                MainScreen(veiwModel)
             }
         }
     }
