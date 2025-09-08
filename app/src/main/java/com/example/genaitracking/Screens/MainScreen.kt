@@ -37,8 +37,8 @@ import io.ktor.websocket.Frame
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainScreen (veiwModel: GenAiVeiwModel){
-    var graphState=veiwModel.GraphState.collectAsState()
-    var textState=veiwModel.TextState.collectAsState()
+    var graphState=veiwModel.graphState.collectAsState()
+    var textState=veiwModel.textState.collectAsState()
     var text="Gen_Ai_Tracking"
     var url=remember{ mutableStateOf("fd69c9bba687") }
     var question=remember{ mutableStateOf("") }
@@ -73,7 +73,9 @@ fun MainScreen (veiwModel: GenAiVeiwModel){
                     onValueChange = {question.value=it},
                     label = { Text("Question") },
                     modifier = Modifier.fillMaxWidth(),
-                    trailingIcon = {Icon(imageVector = Icons.AutoMirrored.Default.Send, contentDescription = null, modifier = Modifier.clickable(onClick = {veiwModel.requestText(url.value,question.value)}))  }
+                    trailingIcon = {Icon(imageVector = Icons.AutoMirrored.Default.Send, contentDescription = null, modifier = Modifier.clickable(onClick = {
+                        veiwModel.ClearState()
+                        veiwModel.requestText(url.value,question.value)}))  }
                 )
 
             }
@@ -107,7 +109,7 @@ fun MainScreen (veiwModel: GenAiVeiwModel){
             textState.value.Loading || graphState.value.Loading -> Box(modifier = Modifier.fillMaxWidth().padding(innerPadding),contentAlignment = Alignment.Center){ CircularProgressIndicator() }
             textState.value.error != null -> Text(text = textState.value.error!!)
             graphState.value.error != null -> Text(text = graphState.value.error!!)
-            textState.value.data != null -> LazyColumn(modifier = Modifier.fillMaxSize().padding(innerPadding)) { item{ Text(text = textState.value.data!!.output.toString())}}
+            textState.value.data != null -> LazyColumn(modifier = Modifier.fillMaxSize().padding(innerPadding)) { item{ Text(text = textState.value.data!!.output!!.message.toString())}}
             graphState.value.data != null ->Box(modifier = Modifier.fillMaxWidth().padding(innerPadding)){ BarChartFromOutput(outputData = graphState.value.data!!.output)}
 
         }

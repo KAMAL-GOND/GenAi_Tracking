@@ -1,5 +1,8 @@
 package com.example.genaitracking.Model
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class TextModel(
-    val output: String
+    var output: String?
 )
